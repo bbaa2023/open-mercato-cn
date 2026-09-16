@@ -143,7 +143,6 @@
   "customers.calendar.editor.description": "描述",
   "customers.calendar.editor.descriptionPlaceholder": "添加详细信息……",
   "customers.calendar.editor.error": "保存事件失败",
-  "customers.calendar.editor.attendees": "参与者",
   "customers.calendar.editor.dates.due": "截止",
   "customers.calendar.editor.dates.ends": "结束",
   "customers.calendar.editor.dates.logged": "记录时间",

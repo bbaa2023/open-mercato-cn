@@ -24,11 +24,15 @@ async function loadAppDictionary(locale: Locale): Promise<Record<string, unknown
     case 'ko':
       return import('../../i18n/ko.json').then((module) => module.default)
     case 'zh-cn': {
-      const [english, chinese] = await Promise.all([
+      const [english, chinese, chineseAi] = await Promise.all([
         import('../../i18n/en.json').then((module) => module.default),
         import('../../i18n/zh-cn.json').then((module) => module.default),
+        import('../../i18n/zh-cn-ai.json').then((module) => module.default),
       ])
-      return { ...english, ...chinese }
+      // English remains the complete fallback dictionary. Chinese overlays only
+      // the keys that have been localized, so the UI never exposes a raw i18n key
+      // while the translation pack is being completed incrementally.
+      return { ...english, ...chinese, ...chineseAi }
     }
     default:
       return import('../../i18n/en.json').then((module) => module.default)
